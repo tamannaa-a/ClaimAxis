@@ -1,35 +1,38 @@
 import React from "react";
+import { Home, FileText, File, Layers } from "lucide-react";
 
-export default function Sidebar({ route, setRoute }) {
+export default function Sidebar({ route, setRoute }){
   const items = [
-    { id: "dashboard", label: "Overview" },
-    { id: "analyze", label: "Analyze Claim" },
-    { id: "classify", label: "Document Classifier" },
-    { id: "summarize", label: "Policy Summarizer" },
+    { id: "overview", label: "Overview", icon: Home },
+    { id: "analyze", label: "Analyze Claim", icon: FileText },
+    { id: "classify", label: "Document Classifier", icon: File },
+    { id: "summarize", label: "Policy Summarizer", icon: Layers },
   ];
 
   return (
-    <aside className="w-64 p-6 bg-[#071029] border-r border-gray-800 min-h-screen">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-neon">ClaimSphere</h1>
-        <p className="text-sm text-gray-400 mt-1">Intelligent Claims Co-pilot</p>
+    <aside className="w-72 h-screen p-6 bg-gradient-to-b from-[#06102a] to-[#071029] border-r border-transparent">
+      <div className="mb-6">
+        <div className="text-3xl brand-gradient">ClaimSphere</div>
+        <div className="mt-1 text-sm subtle">Intelligent Claims Co-pilot</div>
       </div>
 
-      <nav className="space-y-2">
-        {items.map(it => (
-          <button
-            key={it.id}
-            onClick={() => setRoute(it.id)}
-            className={`w-full text-left py-3 px-3 rounded-md ${route === it.id ? "bg-[#0f1724] ring-2 ring-accent" : "hover:bg-gray-800/30"}`}
-          >
-            <span className="font-medium">{it.label}</span>
-          </button>
-        ))}
+      <nav className="space-y-2 mt-6">
+        {items.map(it=>{
+          const Icon = it.icon;
+          const active = route === it.id;
+          return (
+            <button key={it.id} onClick={()=>setRoute(it.id)}
+              className={`flex items-center gap-3 w-full p-3 rounded-xl ${active ? 'bg-[#071827] ring-1 ring-accent' : 'hover:bg-white/2'}`}>
+              <span className={`p-2 rounded-md ${active ? 'bg-[rgba(3,255,214,0.06)]' : ''}`}>
+                <Icon size={18} color="white" />
+              </span>
+              <span className={`${active ? 'text-neon font-semibold' : 'text-gray-200'}`}>{it.label}</span>
+            </button>
+          );
+        })}
       </nav>
 
-      <div className="mt-8 text-xs text-gray-500">
-        <p>Local backend: <span className="text-neon">http://127.0.0.1:8000</span></p>
-      </div>
+      <div className="mt-10 text-xs muted">Local backend: <span className="text-neon">http://127.0.0.1:8000</span></div>
     </aside>
   );
 }
