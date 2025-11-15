@@ -1,0 +1,4 @@
+/* optional global helpers */
+.page-title { font-weight:700; color:#0b2545; margin-bottom:8px; }
+.small-muted { color:#667085; font-size:0.9rem; }
+.card { background:white; border-radius:8px; box-shadow: 0 6px 18px rgba(15,23,42,0.06); padding:16px; }
