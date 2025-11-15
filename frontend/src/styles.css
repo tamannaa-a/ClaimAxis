@@ -2,25 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global */
+/* Fonts (optional if installed locally) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --neon: #03ffd6;
+  --accent: #8b5cf6;
+  --panel: rgba(8,12,20,0.6);
+}
+
 body {
-  background: linear-gradient(180deg, #05060a 0%, #08101f 100%);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* neon glass card */
-.glass-card {
-  background: rgba(12, 18, 28, 0.6);
+/* Glass card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 40px -20px rgba(3,255,214,0.06);
+}
+
+/* Neon accent header */
+.brand-gradient {
+  background: linear-gradient(90deg, var(--neon), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+/* Buttons */
+.btn-neon {
+  background: linear-gradient(90deg, rgba(3,255,214,0.12), rgba(139,92,246,0.12));
   border: 1px solid rgba(255,255,255,0.04);
-  backdrop-filter: blur(6px);
+  color: var(--neon);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: transform .14s ease, box-shadow .14s ease;
 }
+.btn-neon:hover { transform: translateY(-2px); box-shadow: 0 12px 40px -20px rgba(3,255,214,0.12); }
 
-/* neon button */
-.button-neon {
-  background: linear-gradient(90deg,#7c3aed,#00ffea);
-  color: #05060a;
-  padding: .6rem 1rem;
-  border-radius: .6rem;
-  font-weight: 600;
-  box-shadow: 0 8px 30px -12px rgba(0,255,234,0.25);
-}
+/* small helpers */
+.muted { color: rgba(255,255,255,0.55); }
+.subtle { color: rgba(255,255,255,0.45); }
